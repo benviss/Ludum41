@@ -9,8 +9,10 @@ public class EnemyScript : MonoBehaviour {
 
     NavMeshAgent pathfinder;
     Transform player;
-    public Vector3 target;
+    Vector3 target;
     Material myMat;
+
+    public GameObject weapon;
     public bool isFleeing = false;
     public float range = 0;
 
