@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
 
   public void Move(Vector3 _velocity)
   {
-    velocity = _velocity;
+    Vector3 heightCorrectedPoint = Camera.main.transform.TransformDirection(new Vector3(_velocity.x, _velocity.y, _velocity.z));
+    heightCorrectedPoint.y = 1;
+    velocity = heightCorrectedPoint;
   }
 
   public void LookAt(Vector3 lookPoint)
@@ -26,7 +28,9 @@ public class PlayerController : MonoBehaviour
 
   void FixedUpdate()
   {
-    myRigidbody.MovePosition(myRigidbody.position + velocity * Time.fixedDeltaTime);
+    //transform.position += transform.forward * velocity.z * Time.deltaTime;
+    //transform.position += transform.right * velocity.x * Time.deltaTime;
 
+    myRigidbody.MovePosition(myRigidbody.position + velocity  * Time.fixedDeltaTime);
   }
 }

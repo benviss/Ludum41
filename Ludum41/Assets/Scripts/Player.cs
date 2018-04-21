@@ -44,9 +44,6 @@ public class Player : LivingEntity
       Vector3 point = ray.GetPoint(rayDistance);
       Debug.DrawLine(ray.origin,point,Color.red);
       controller.LookAt(point);
-      if ((new Vector2(point.x, point.z) - new Vector2(transform.position.x, transform.position.z)).sqrMagnitude > 1) {
-        //gunController.Aim(point);
-      }
     }
 
     //Attacks
