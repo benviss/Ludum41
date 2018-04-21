@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    List<GameObject> enemies;
     float nextSpawnTime;
-
+    int currentSpawned = 0;
     public GameObject EnemyPrefab;
     public float minSpawnTime = 0;
     public float maxSpawnTime = 0;
@@ -14,16 +13,15 @@ public class EnemySpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        enemies = new List<GameObject>();
         nextSpawnTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if ((enemies.Count < maxSpawnNumber) && (Time.time > nextSpawnTime))
+        if ((currentSpawned < maxSpawnNumber) && (Time.time > nextSpawnTime))
         {
-            SpawnEnemy();
+            SpawnEnemy(Random.Range(0,10));
             nextSpawnTime = Time.time + WaitTime();
         }
 	}
@@ -33,11 +31,39 @@ public class EnemySpawner : MonoBehaviour {
         return Random.Range(minSpawnTime, maxSpawnTime);
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(float difficulty)
     {
         GameObject newEnemy = Instantiate(EnemyPrefab, transform);
         Vector3 pos = Random.onUnitSphere;
         pos.y = .1f;
         newEnemy.transform.localPosition = pos;
+
+        WeaponController weapon = newEnemy.GetComponent<WeaponController>();
+        Enemy script = newEnemy.GetComponent<Enemy>();
+
+        if (difficulty < 4)
+        {
+            weapon.Equipweapon(0);
+        }
+        else if (difficulty < 6)
+        {
+            weapon.Equipweapon(1);
+        }
+        else if (difficulty < 8)
+        {
+            weapon.Equipweapon(2);
+        }
+        else if (difficulty < 10)
+        {
+            weapon.Equipweapon(3);
+        }
+
+        currentSpawned++;
+        script.OnDeath += OnChildDeath;
+    }
+
+    private void OnChildDeath()
+    {
+        currentSpawned--;
     }
 }
