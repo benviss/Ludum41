@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207809657253170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.002142, y: 0, z: -6.4521484}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,5 +54,5 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 1428334623221750, guid: 0bb5739f603e7444f8c2895e9bbdda88,
     type: 2}
   minSpawnTime: 0
-  maxSpawnTime: 5
-  maxSpawnNumber: 10
+  maxSpawnTime: 2
+  maxSpawnNumber: 50
