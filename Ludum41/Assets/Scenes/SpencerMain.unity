@@ -440,10 +440,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1862047627}
-  smoothSpeed: 0.125
-  offset: {x: 10, y: -10, z: 10}
+  smoothSpeed: 0.3
+  rotationAngle: 0
+  tiltAngle: 30
+  distance: 10
   scale: 1
-  scrollSpeed: 0
+  scrollSpeed: 1
+  rotSpeed: 2
 --- !u!1 &543228620
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +626,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4494541083496638, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 33.3
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 4494541083496638, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
       propertyPath: m_LocalPosition.y
@@ -631,7 +634,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4494541083496638, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 34.6
+      value: 21.7
       objectReference: {fileID: 0}
     - target: {fileID: 4494541083496638, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
       propertyPath: m_LocalRotation.x
