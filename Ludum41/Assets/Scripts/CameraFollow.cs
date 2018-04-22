@@ -6,40 +6,52 @@ public class CameraFollow : MonoBehaviour
   public Transform target;
 
   public float smoothSpeed = 0.125f;
-  public Vector3 offset;
+    public float rotationAngle = 0;
+    public float tiltAngle = 30;
+  public float distance = 10;
   public float scale = 1;
-  public float scrollSpeed;
+  public float scrollSpeed = 1;
+  public float rotSpeed = 2;
+    Player player;
 
   private void Start()
   {
-    offset = target.position - transform.position;
-  }
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
 
   void FixedUpdate()
   {
-    Vector3 smoothedPosition = Vector3.Lerp(transform.position, target.position - offset, smoothSpeed);
-    transform.position = new Vector3(smoothedPosition.x, target.transform.localScale.y + 10, smoothedPosition.z);
-    //transform.RotateAround(target.position, Vector3.up, 1);
-    transform.LookAt(target);
-  }
+        Vector3 offset = CalcOffset();
+        Vector3 unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .5f) * distance;
+        float range = (unsmoothedPosition - transform.position).sqrMagnitude;
+        if (range < .001)
+        {
+            transform.position = unsmoothedPosition;
+        }
+        else
+        {
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, unsmoothedPosition, smoothSpeed);
+            transform.position = smoothedPosition;
+        }
 
-  public Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles)
-  {
-    Vector3 dir = point - pivot; // get point direction relative to pivot
-    dir = Quaternion.Euler(angles) * dir; // rotate it
-    point = dir + pivot; // calculate rotated point
-    return point; // return it
-  }
+        transform.LookAt(target);
+    }
+
+    Vector3 CalcOffset()
+    {
+        Vector3 offset = Quaternion.AngleAxis(rotationAngle, Vector3.up) * Vector3.forward;
+        Vector3 cross = Vector3.Cross(offset, Vector3.down);
+        Vector3 offset2 = Quaternion.AngleAxis(tiltAngle, cross) * offset;
+
+        return offset2;
+    }
 
   public void Scroll(float _scroll) {
-    offset += transform.forward * _scroll * scrollSpeed;
+        distance -= _scroll * scrollSpeed;
   }
 
   public void Rotate(float hmm)
   {
-
-    Vector3 newOffset = RotatePointAroundPivot(transform.position, target.position, new Vector3(0,hmm*5,0));
-    offset = target.position - newOffset;
-    //transform.LookAt(target);
+        rotationAngle -= hmm * rotSpeed;
   }
 }

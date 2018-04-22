@@ -96,14 +96,16 @@ public class Player : LivingEntity
         StartCoroutine(AnimateAttack());
         //AudioManager.instance.PlaySound(attackAudio, transform.position);
 
-
         lastAttack = Time.time;
         List<GameObject> toAttack = attackCone.GetCollided();
         foreach (var item in toAttack)
         {
             LivingEntity entity = item.GetComponent<LivingEntity>();
-            entity.OnDeath += AddMass;
-            entity.TakeDamage(10);
+            if (entity != null)
+            {
+                entity.OnDeath += AddMass;
+                entity.TakeDamage(10);
+            }
         }
     }
 
