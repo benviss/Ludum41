@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour {
+public class TileBlock : MonoBehaviour {
 
-    Rigidbody building;
-
-    public float width, length, height;
-    
 	// Use this for initialization
 	void Start () {
-
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
 	}
 }

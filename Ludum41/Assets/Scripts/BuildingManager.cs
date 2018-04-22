@@ -14,9 +14,9 @@ public class BuildingManager : MonoBehaviour {
             GameObject newBuilding = new GameObject("building" + Buildings.Count);
             Building buildingObject = newBuilding.AddComponent<Building>();
             newBuilding.transform.parent = transform;
-            buildingObject.SetDimensions(5, 5, 5);
+            //buildingObject.SetDimensions(5, 5, 5);
 
-            buildingObject.CreateBuilding();
+            //buildingObject.CreateBuilding();
 
             //Randomly places buildings throughout the map
             Vector3 offset = new Vector3(Random.Range(-50.0f, 50.0f), 0, Random.Range(-50.0f, 50.0f));
