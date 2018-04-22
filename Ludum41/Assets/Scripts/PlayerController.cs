@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
   public void Move(Vector3 _velocity)
   {
-    Vector3 heightCorrectedPoint = Camera.main.transform.TransformDirection(new Vector3(_velocity.x, _velocity.y, _velocity.z));
+        Vector3 heightCorrectedPoint = transform.TransformDirection( _velocity);//Camera.main.transform.TransformDirection(new Vector3(_velocity.x, _velocity.y, _velocity.z));
     heightCorrectedPoint.y = 1;
     velocity = heightCorrectedPoint;
   }
