@@ -105,11 +105,11 @@ public class Player : LivingEntity
         List<GameObject> toAttack = attackCone.GetCollided();
         foreach (var item in toAttack)
         {
-            LivingEntity entity = item.GetComponent<LivingEntity>();
-            if (entity != null)
+      IDamageable damageableObject = item.GetComponent<IDamageable>();
+            if (damageableObject != null)
             {
-                entity.OnDeath += AddMass;
-                entity.TakeDamage(10);
+              item.GetComponent<LivingEntity>().OnDeath += AddMass;
+                damageableObject.TakeHit(10, item.GetComponent<LivingEntity>().transform.position, transform.forward);
             }
         }
     }

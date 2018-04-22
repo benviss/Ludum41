@@ -21,6 +21,8 @@ public class Enemy : LivingEntity {
     float lastUpdateTime = 0;
     WeaponController weaponController;
 
+  public ParticleSystem DeathSplash;
+
     // Use this for initialization
     protected override void Start () {
         base.Start();
@@ -31,6 +33,7 @@ public class Enemy : LivingEntity {
         target = transform.position;
         weaponController = GetComponent<WeaponController>();
         range = weaponController.GetWeaponRange();
+
 	}
 
     // Update is called once per frame
@@ -49,7 +52,15 @@ public class Enemy : LivingEntity {
 
     }
 
-    void SetFleeingStatus()
+  public override void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
+  {
+    if (damage >= health) {
+      Destroy(Instantiate(DeathSplash.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject, DeathSplash.startLifetime);
+    }
+    base.TakeHit(damage, hitPoint, hitDirection);
+  }
+
+  void SetFleeingStatus()
     {
         if (player.size > difficulty)
         {
