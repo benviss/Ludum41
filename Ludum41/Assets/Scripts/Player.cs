@@ -16,7 +16,8 @@ public class Player : LivingEntity
     public GameObject attackConeObject;
     private AttackCone attackCone;
     public Transform[] arms;
-    public float lastAttack;
+    public GameObject[] legs;
+  public float lastAttack;
 
     CameraFollow cameraFollow;
     Camera viewCamera;
@@ -41,13 +42,18 @@ public class Player : LivingEntity
 
   void Update()
   {
-    // Movement inputd
+    // Movement input
     Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+    Vector3 moveVelocity = moveInput.normalized * moveSpeed;
+    controller.Move(moveVelocity);
+
+    AnimateLegs(moveInput);
+
+    //Camera Tracking Input
     float cameraRotate = 0;
     if (Input.GetKey(KeyCode.Q)) {
       cameraRotate = -1;
-    }
-    else if (Input.GetKey(KeyCode.E)) {
+    } else if (Input.GetKey(KeyCode.E)) {
       cameraRotate = 1;
     } else {
       cameraRotate = 0;
@@ -55,12 +61,11 @@ public class Player : LivingEntity
     if (cameraRotate != 0) {
       cameraFollow.Rotate(cameraRotate);
     }
+
     float scroll = Input.GetAxis("Mouse ScrollWheel");
     if (scroll != 0) {
       cameraFollow.Scroll(scroll);
     }
-    Vector3 moveVelocity = moveInput.normalized * moveSpeed;
-    controller.Move(moveVelocity);
 
     // Look input
     Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
@@ -126,6 +131,14 @@ public class Player : LivingEntity
         attackRange = baseAttackRange * Mathf.Pow(size, .5f);
         transform.localScale = Vector3.one * size;
     }
+
+  void AnimateLegs(Vector3 _moveInput)
+  {
+    bool animOff = _moveInput != Vector3.zero;
+    foreach (var item in legs) {
+      item.GetComponent<Animator>().enabled = animOff;
+    }
+  }
 
     IEnumerator AnimateAttack()
     {
