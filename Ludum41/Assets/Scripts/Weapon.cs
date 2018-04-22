@@ -6,7 +6,8 @@ public class Weapon : MonoBehaviour {
 
     public float damage;
     public float range;
-    public float firerate;
+    public float meleeTime;
+    public float meleeCooldown;
     public bool ranged;
 
     public Transform[] projectileSpawn;
@@ -47,14 +48,17 @@ public class Weapon : MonoBehaviour {
 
     void LateUpdate()
     {
-        // animate recoil
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref recoilSmoothDampVelocity, recoilMoveSettleTime);
-        recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilRotSmoothDampVelocity, recoilRotationSettleTime);
-        transform.localEulerAngles = transform.localEulerAngles + Vector3.left * recoilAngle;
-
-        if (!isReloading && projectilesRemainingInMag == 0)
+        if (ranged)
         {
-            Reload();
+            // animate recoil
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref recoilSmoothDampVelocity, recoilMoveSettleTime);
+            recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilRotSmoothDampVelocity, recoilRotationSettleTime);
+            transform.localEulerAngles = transform.localEulerAngles + Vector3.left * recoilAngle;
+
+            if (!isReloading && projectilesRemainingInMag == 0)
+            {
+                Reload();
+            }
         }
     }
 
@@ -118,6 +122,29 @@ public class Weapon : MonoBehaviour {
         projectilesRemainingInMag = projectilesPerMag;
     }
 
+    IEnumerator AnimateMelee()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(.2f);
+
+        float animateSpeed = 1f / meleeTime;
+        float percent = 0;
+        Vector3 initialRot = transform.localEulerAngles;
+        float maxAngle = -110;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * animateSpeed;
+            float interpolation = (-Mathf.Pow(percent, 2) + percent) * 4;
+            float angle = Mathf.Lerp(0, maxAngle, interpolation);
+            transform.localEulerAngles = initialRot + Vector3.left * angle;
+
+            yield return null;
+        }
+
+        isReloading = false;
+    }
+
     public void Aim(Vector3 aimPoint)
     {
         if (!isReloading)
@@ -139,6 +166,10 @@ public class Weapon : MonoBehaviour {
 
     void MeleeAttack()
     {
-
+        if (!isReloading && (Time.time > nextShotTime))
+        {
+            StartCoroutine(AnimateMelee());
+            nextShotTime = Time.time + meleeCooldown + meleeTime;
+        }
     }
 }

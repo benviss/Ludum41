@@ -577,6 +577,11 @@ Prefab:
       propertyPath: m_Animations.Array.data[0]
       value: 
       objectReference: {fileID: 7400000, guid: be2f8b4a5384b3c408403ff357619cb1, type: 2}
+    - target: {fileID: 114541973519513422, guid: 6883feb25c299ca409f7c4fe84350116,
+        type: 2}
+      propertyPath: startingHealth
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6883feb25c299ca409f7c4fe84350116, type: 2}
   m_IsPrefabParent: 0
@@ -659,7 +664,7 @@ Prefab:
     - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
         type: 2}
       propertyPath: maxSpawnTime
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
         type: 2}

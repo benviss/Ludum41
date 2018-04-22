@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 offset = CalcOffset();
         Vector3 unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .5f) * distance;
         float range = (unsmoothedPosition - transform.position).sqrMagnitude;
-        if (range < .001)
+        if (range < .01)
         {
             transform.position = unsmoothedPosition;
         }
@@ -52,6 +52,6 @@ public class CameraFollow : MonoBehaviour
 
   public void Rotate(float hmm)
   {
-        rotationAngle -= hmm * rotSpeed;
+        rotationAngle += hmm * rotSpeed;
   }
 }

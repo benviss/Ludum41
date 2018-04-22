@@ -51,10 +51,13 @@ public class Projectile : MonoBehaviour
 
     void OnHitObject(Collider c, Vector3 hitPoint)
     {
+        Debug.Log("OnHitObject");
+
         IDamageable damageableObject = c.GetComponent<IDamageable>();
         if (damageableObject != null)
         {
             damageableObject.TakeHit(damage, hitPoint, transform.forward);
+            Debug.Log("HIT");
         }
         GameObject.Destroy(gameObject);
     }
