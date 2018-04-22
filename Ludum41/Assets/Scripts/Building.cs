@@ -9,11 +9,14 @@ public class Building : LivingEntity {
     public GameObject FullBuilding, DeadBuilding;
     public Vector3 location;
     public float deathTime = 1.0f;
+    public float population;
 
-	// Use this for initialization
-	void Start () {
 
-	}
+    protected override void Start()
+    {
+        base.Start();
+        DeadBuilding.SetActive(false);
+    }
 
     public override void TakeDamage(float damage)
     {
@@ -26,8 +29,9 @@ public class Building : LivingEntity {
     
     void SwapModels()
     {
-        FullBuilding.SetActive(false);
         DeadBuilding.SetActive(true);
+
+        FullBuilding.SetActive(false);
     }
 
 

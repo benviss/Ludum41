@@ -42,48 +42,49 @@ public class Player : LivingEntity
 
   void Update()
   {
-    // Movement input
-    Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-    Vector3 moveVelocity = moveInput.normalized * moveSpeed;
-    controller.Move(moveVelocity);
+        // Movement input
+        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector3 moveVelocity = moveInput.normalized * moveSpeed;
+        controller.Move(moveVelocity);
 
-    AnimateLegs(moveInput);
+        AnimateLegs(moveInput);
 
-    //Camera Tracking Input
-    float cameraRotate = 0;
-    if (Input.GetKey(KeyCode.Q)) {
-      cameraRotate = -1;
-    } else if (Input.GetKey(KeyCode.E)) {
-      cameraRotate = 1;
-    } else {
-      cameraRotate = 0;
-    }
-    if (cameraRotate != 0) {
-      cameraFollow.Rotate(cameraRotate);
-    }
+        //Camera Tracking Input
+        float cameraRotate = 0;
+        if (Input.GetKey(KeyCode.Q)) {
+          cameraRotate = -1;
+        } else if (Input.GetKey(KeyCode.E)) {
+          cameraRotate = 1;
+        } else {
+          cameraRotate = 0;
+        }
+        if (cameraRotate != 0) {
+          cameraFollow.Rotate(cameraRotate);
+        }
 
-    float scroll = Input.GetAxis("Mouse ScrollWheel");
-    if (scroll != 0) {
-      cameraFollow.Scroll(scroll);
-    }
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0) {
+          cameraFollow.Scroll(scroll);
+        }
 
-    // Look input
-    Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
-    Plane groundPlane = new Plane(Vector3.up, Vector3.up/* * gunController.GunHeight*/);
-    float rayDistance;
+        // Look input
+        Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.up/* * gunController.GunHeight*/);
+        float rayDistance;
 
-    if (groundPlane.Raycast(ray, out rayDistance)) {
-      Vector3 point = ray.GetPoint(rayDistance);
-      Debug.DrawLine(ray.origin,point,Color.red);
-      controller.LookAt(point);
-    }
+        if (groundPlane.Raycast(ray, out rayDistance)) {
+          Vector3 point = ray.GetPoint(rayDistance);
+          Debug.DrawLine(ray.origin,point,Color.red);
+          controller.LookAt(point);
+        }
 
-    //Attacks
-    if (Input.GetMouseButton(0)) {
-      if (Time.time - lastAttack > attackSpeed) {
-        Attack();
-      }
-    }
+        //Attacks   
+        if (Input.GetMouseButton(0)) {
+          if (Time.time - lastAttack > attackSpeed) {
+            Attack();
+          }
+        }
+
         if (health < rb.mass * .8f)
         {
             rb.mass -= size;

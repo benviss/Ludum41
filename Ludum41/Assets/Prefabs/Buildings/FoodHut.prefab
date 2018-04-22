@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1058939190830080
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb3500d5edf4e94ea27dd52404b6871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 200
+  health: 0
   width: 10.5
   length: 10.5
   height: 6
@@ -246,6 +247,7 @@ MonoBehaviour:
   DeadBuilding: {fileID: 1294386279480762}
   location: {x: 0, y: 0, z: 0}
   deathTime: 1
+  population: 0
 --- !u!208 &208512714894524108
 NavMeshObstacle:
   m_ObjectHideFlags: 1
