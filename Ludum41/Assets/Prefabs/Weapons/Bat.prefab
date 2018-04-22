@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  range: 2
+  range: 3.5
   meleeTime: 0.2
   meleeCooldown: 0.5
   ranged: 0

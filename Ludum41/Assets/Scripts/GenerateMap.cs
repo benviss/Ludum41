@@ -18,7 +18,7 @@ public class GenerateMap : MonoBehaviour {
             for(int w = 0; w < mapWidth; w++)
             {
                 int result = (int)(Mathf.PerlinNoise(w/5.0f + seed, h/5.0f + seed) * 10);
-                Vector3 pos = new Vector3((w * buildingFootprint)-50, 1, (h * buildingFootprint)-50);
+                Vector3 pos = new Vector3((w * buildingFootprint)-50, 0, (h * buildingFootprint)-50);
 
                 if (result < 2)
                     Instantiate(buildings[0], pos, Quaternion.identity);
