@@ -111,10 +111,10 @@ public class Player : LivingEntity
 
     void AddMass()
     {
-        health++;
+        health += 1;
         if (health > .9f * rb.mass)
         {
-            rb.mass++;
+            rb.mass += 1;
             CalcShizzle();
         }
     }
