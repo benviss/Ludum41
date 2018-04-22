@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Building : LivingEntity {
 
-    Rigidbody building;
-    
 
     public float width, length, height;
     public GameObject FullBuilding, DeadBuilding;
@@ -14,6 +12,7 @@ public class Building : LivingEntity {
 
 	// Use this for initialization
 	void Start () {
+
 	}
 
     public override void TakeDamage(float damage)
