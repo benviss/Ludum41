@@ -35,6 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4253423959427852}
   - component: {fileID: 114461435532850310}
+  - component: {fileID: 65081106340438642}
   m_Layer: 0
   m_Name: Gas 1
   m_TagString: Untagged
@@ -96,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658883947848598}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.740878, y: 3.5299076e-17, z: -7.897289}
+  m_LocalPosition: {x: 24.139977, y: 4.7687022e-17, z: -13.476325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4845579068130726}
@@ -213,6 +214,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806379638401348}
   m_Mesh: {fileID: 4300000, guid: 55048cab2e89b0d40a55fea968135e78, type: 3}
+--- !u!65 &65081106340438642
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658883947848598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 1, z: 1.4}
+  m_Center: {x: -0.6, y: 0.4, z: 0}
 --- !u!114 &114461435532850310
 MonoBehaviour:
   m_ObjectHideFlags: 1

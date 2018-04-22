@@ -69,6 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4800739938218044}
   - component: {fileID: 114640409679860184}
+  - component: {fileID: 65138450682220154}
   m_Layer: 0
   m_Name: FoodHut 1
   m_TagString: Untagged
@@ -123,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795181194218282}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.221309, y: 1.8740389e-18, z: 0.35600778}
+  m_LocalPosition: {x: 4.9769015, y: 5.4553263e-17, z: -23.368605}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236625636882762}
@@ -213,6 +214,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294386279480762}
   m_Mesh: {fileID: 4300000, guid: aeb86293cd3b3a9449bbbf0e6605466f, type: 3}
+--- !u!65 &65138450682220154
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795181194218282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.02, y: 1.51, z: 2.78}
+  m_Center: {x: 0, y: 0.77, z: 0}
 --- !u!114 &114640409679860184
 MonoBehaviour:
   m_ObjectHideFlags: 1
