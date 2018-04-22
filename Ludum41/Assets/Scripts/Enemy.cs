@@ -8,13 +8,15 @@ using UnityEngine.AI;
 public class Enemy : LivingEntity {
 
     NavMeshAgent pathfinder;
-    Transform player;
+    Transform playerTrans;
+    public Player player;
     Vector3 target;
     Material myMat;
+
     //public GameObject weapon;
     public bool isFleeing = false;
     public float range = 0;
-
+    public float difficulty;
     float updatePathTime = .1f;
     float lastUpdateTime = 0;
     WeaponController weaponController;
@@ -23,7 +25,8 @@ public class Enemy : LivingEntity {
     protected override void Start () {
         base.Start();
         pathfinder = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+
         myMat = GetComponent<Renderer>().material;
         target = transform.position;
         weaponController = GetComponent<WeaponController>();
@@ -38,15 +41,29 @@ public class Enemy : LivingEntity {
             lastUpdateTime = Time.time;
             UpdateTarget();
             pathfinder.SetDestination(target);
+            SetFleeingStatus();
         }
 
         // Draw Target Loc
         Debug.DrawLine(transform.position, target, Color.blue);
+
+    }
+
+    void SetFleeingStatus()
+    {
+        if (player.size > difficulty)
+        {
+            isFleeing = true;
+        }
+        else
+        {
+            isFleeing = false;
+        }
     }
 
     void UpdateTarget()
     {
-        Vector3 direction = transform.position - player.position;
+        Vector3 direction = transform.position - playerTrans.position;
         if (isFleeing)
         {
             // RUNNN AWAYY
@@ -54,7 +71,7 @@ public class Enemy : LivingEntity {
         }
         else
         {
-            target = player.position + direction.normalized * range;
+            target = playerTrans.position + direction.normalized * range;
 
             if (direction.magnitude < range + .1)
             {
@@ -65,8 +82,10 @@ public class Enemy : LivingEntity {
 
     void Attack()
     {
-        transform.LookAt(player);
-        weaponController.Aim(player.position);
+        Vector3 targetPos = playerTrans.position;
+        targetPos.y = transform.position.y;
+        transform.LookAt(targetPos);
+        weaponController.Aim(playerTrans.position);
         weaponController.Attack();
     }
 }

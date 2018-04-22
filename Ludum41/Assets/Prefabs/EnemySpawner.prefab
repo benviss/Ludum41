@@ -55,4 +55,4 @@ MonoBehaviour:
     type: 2}
   minSpawnTime: 0
   maxSpawnTime: 2
-  maxSpawnNumber: 50
+  maxSpawnNumber: 20

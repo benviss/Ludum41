@@ -5,25 +5,34 @@ using System.Collections.Generic;
 [RequireComponent(typeof(PlayerController))]
 public class Player : LivingEntity
 {
+    public float baseMoveSpeed = 7;
+    public float moveSpeed = 7;
+    public float baseAttackRange = 1;
+    public float attackRange = 1;
+    public float attackSpeed = .75f;
+    public float size = 1;
+    Rigidbody rb;
 
-  public float moveSpeed = 5;
-  public float attackSpeed = 2;
+    public GameObject attackConeObject;
+    private AttackCone attackCone;
+    public Transform[] arms;
+    public float lastAttack;
 
-  public CameraFollow cameraFollow;
-  public GameObject attackConeObject;
-  private AttackCone attackCone;
-  public float lastAttack;
+    CameraFollow cameraFollow;
+    Camera viewCamera;
+    PlayerController controller;
 
-  Camera viewCamera;
-  PlayerController controller;
 
-  protected override void Start()
-  {
-    base.Start();
-    attackCone = attackConeObject.GetComponent<AttackCone>();
-  }
+    protected override void Start()
+    {
+        base.Start();
+        attackCone = attackConeObject.GetComponent<AttackCone>();
+        rb = GetComponent<Rigidbody>();
+        rb.mass = 7f;
+    }
 
-  void Awake()
+
+    void Awake()
   {
     controller = GetComponent<PlayerController>();
     viewCamera = Camera.main;
@@ -70,21 +79,73 @@ public class Player : LivingEntity
         Attack();
       }
     }
-  }
+        if (health < rb.mass * .8f)
+        {
+            rb.mass -= size;
+            CalcShizzle();
+        }
+    }
 
   public override void Die()
   {
     base.Die();
   }
 
-  public void Attack()
-  {
-    Debug.Log("Attack");
-    lastAttack = Time.time;
-    List<GameObject> toAttack = attackCone.GetCollided();
-    foreach (var item in toAttack) {
-      item.GetComponent<LivingEntity>().TakeDamage(1);
-    }
-  }
+    public void Attack()
+    {
+        StartCoroutine(AnimateAttack());
+        //AudioManager.instance.PlaySound(attackAudio, transform.position);
 
+
+        lastAttack = Time.time;
+        List<GameObject> toAttack = attackCone.GetCollided();
+        foreach (var item in toAttack)
+        {
+            LivingEntity entity = item.GetComponent<LivingEntity>();
+            entity.OnDeath += AddMass;
+            entity.TakeDamage(10);
+        }
+    }
+
+    void AddMass()
+    {
+        health++;
+        if (health > .9f * rb.mass)
+        {
+            rb.mass++;
+            CalcShizzle();
+        }
+    }
+
+    void CalcShizzle()
+    {
+        size = Mathf.Pow(rb.mass, .5f) * .4f;
+        moveSpeed = baseMoveSpeed * Mathf.Pow(size, .5f);
+        attackRange = baseAttackRange * Mathf.Pow(size, .5f);
+        transform.localScale = Vector3.one * size;
+    }
+
+    IEnumerator AnimateAttack()
+    {
+        yield return new WaitForSeconds(.2f);
+
+        float reloadSpeed = 1f / attackSpeed;
+        float percent = 0;
+        Vector3 initialRot = Vector3.zero;
+        float maxAttackAngle = -40;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * reloadSpeed;
+            float interpolation = (-Mathf.Pow(percent, 2) + percent) * 4;
+            float reloadAngle = Mathf.Lerp(0, maxAttackAngle, interpolation);
+
+            foreach (Transform t in arms)
+            {
+                t.localEulerAngles = initialRot + Vector3.left * reloadAngle;
+            }
+
+            yield return null;
+        }
+    }
 }

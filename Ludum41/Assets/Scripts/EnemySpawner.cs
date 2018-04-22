@@ -10,18 +10,21 @@ public class EnemySpawner : MonoBehaviour {
     public float minSpawnTime = 0;
     public float maxSpawnTime = 0;
     public float maxSpawnNumber = 0;
+    Player player;
 
 	// Use this for initialization
 	void Start () {
         nextSpawnTime = 0;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if ((currentSpawned < maxSpawnNumber) && (Time.time > nextSpawnTime))
         {
-            SpawnEnemy(Random.Range(0,10));
+            SpawnEnemy(Random.Range(0,player.size*2));
             nextSpawnTime = Time.time + WaitTime();
         }
 	}
@@ -60,6 +63,8 @@ public class EnemySpawner : MonoBehaviour {
 
         currentSpawned++;
         script.OnDeath += OnChildDeath;
+        script.player = player;
+        script.difficulty = difficulty;
     }
 
     private void OnChildDeath()
