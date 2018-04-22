@@ -669,8 +669,14 @@ Prefab:
     - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
         type: 2}
       propertyPath: maxSpawnNumber
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
+        type: 2}
+      propertyPath: EnemyPrefab
+      value: 
+      objectReference: {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
   m_IsPrefabParent: 0
@@ -1064,6 +1070,17 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -42.64
       objectReference: {fileID: 0}
+    - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
+        type: 2}
+      propertyPath: EnemyPrefab
+      value: 
+      objectReference: {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc,
+        type: 2}
+    - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
+        type: 2}
+      propertyPath: maxSpawnNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
   m_IsPrefabParent: 0
@@ -1209,6 +1226,12 @@ Prefab:
       propertyPath: maxSpawnNumber
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
+        type: 2}
+      propertyPath: EnemyPrefab
+      value: 
+      objectReference: {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
   m_IsPrefabParent: 0
@@ -1348,6 +1371,12 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -42.64
       objectReference: {fileID: 0}
+    - target: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324,
+        type: 2}
+      propertyPath: EnemyPrefab
+      value: 
+      objectReference: {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
   m_IsPrefabParent: 0

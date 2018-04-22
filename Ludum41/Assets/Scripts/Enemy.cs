@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Renderer))]
+//[RequireComponent(typeof(Renderer))]
 public class Enemy : LivingEntity {
 
     NavMeshAgent pathfinder;
@@ -27,7 +27,7 @@ public class Enemy : LivingEntity {
         pathfinder = GetComponent<NavMeshAgent>();
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
 
-        myMat = GetComponent<Renderer>().material;
+        //myMat = GetComponent<Renderer>().material;
         target = transform.position;
         weaponController = GetComponent<WeaponController>();
         range = weaponController.GetWeaponRange();
