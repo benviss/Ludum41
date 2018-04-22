@@ -3,27 +3,32 @@
 public class CameraFollow : MonoBehaviour
 {
 
-  public Transform target;
+    public Transform target;
 
-  public float smoothSpeed = 0.125f;
+    public float smoothSpeed = 0.125f;
     public float rotationAngle = 0;
     public float tiltAngle = 30;
-  public float distance = 10;
-  public float scale = 1;
-  public float scrollSpeed = 1;
-  public float rotSpeed = 2;
+    public float distance = 10;
+    public float scale = 1;
+    public float scrollSpeed = 1;
+    public float rotSpeed = 2;
     Player player;
 
-  private void Start()
-  {
+    private void Start()
+    {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
-  void FixedUpdate()
-  {
+    void FixedUpdate()
+    {
         Vector3 offset = CalcOffset();
         Vector3 unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .5f) * distance;
         float range = (unsmoothedPosition - transform.position).sqrMagnitude;
+
+        stuf(range);
+        unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .5f) * distance;
+        range = (unsmoothedPosition - transform.position).sqrMagnitude;
+
         if (range < .01)
         {
             transform.position = unsmoothedPosition;
@@ -37,6 +42,24 @@ public class CameraFollow : MonoBehaviour
         transform.LookAt(target);
     }
 
+    void stuf(float distance)
+    {
+        Vector3 cameraNormal = Quaternion.AngleAxis(tiltAngle, transform.right * -1) * transform.forward;
+
+        float dot = Vector3.Dot(player.transform.forward, cameraNormal);
+        float dotRight = Vector3.Dot(player.transform.forward, transform.right);
+
+        dot *= -1;
+        dot += 1;
+        dotRight = Mathf.Clamp(dotRight, -.8f, .8f);
+        distance = Mathf.Clamp(distance, 0.01f, .5f);
+        distance = Mathf.Pow(distance, .7f);
+        float rotateBy = dotRight * distance * 1.7f;
+        rotateBy = Mathf.Clamp(rotateBy, -1.5f, 1.5f);
+        Rotate(rotateBy);
+
+    }
+
     Vector3 CalcOffset()
     {
         Vector3 offset = Quaternion.AngleAxis(rotationAngle, Vector3.up) * Vector3.forward;
@@ -46,9 +69,9 @@ public class CameraFollow : MonoBehaviour
         return offset2;
     }
 
-  public void Scroll(float _scroll) {
+    public void Scroll(float _scroll) {
         distance -= _scroll * scrollSpeed;
-  }
+    }
 
   public void Rotate(float hmm)
   {

@@ -650,6 +650,8 @@ MonoBehaviour:
   isFleeing: 0
   range: 5
   difficulty: 0
+  DeathSplash: {fileID: 198747243464366772, guid: e88da0099449849459d0de13f6e62aac,
+    type: 2}
 --- !u!114 &114565557799478982
 MonoBehaviour:
   m_ObjectHideFlags: 1
