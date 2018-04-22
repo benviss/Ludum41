@@ -460,7 +460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1076486949}
   smoothSpeed: 0.125
-  offset: {x: 10, y: -10, z: 10}
+  offset: {x: 0, y: 10, z: 10}
+  scale: 1
+  scrollSpeed: 2
 --- !u!1 &473353888
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +794,7 @@ MonoBehaviour:
   startingHealth: 0
   moveSpeed: 4
   attackSpeed: 1.5
+  cameraFollow: {fileID: 0}
   attackConeObject: {fileID: 473353888}
   lastAttack: 0
 --- !u!114 &1076486951
@@ -820,7 +823,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!1 &1340691403
 GameObject:
