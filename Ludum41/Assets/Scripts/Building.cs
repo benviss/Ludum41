@@ -18,7 +18,7 @@ public class Building : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-  //      CreateBuilding();
+
 	}
 
     public void CreateBuilding()
@@ -27,9 +27,11 @@ public class Building : MonoBehaviour {
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.parent = transform;
         cube.transform.localScale = new Vector3(length, height, width);
-
         cube.transform.Translate(offset);
         cube.transform.Translate(0, height/2, 0);
+
+        //Set the Cubes Color
+        cube.GetComponent<Renderer>().material.color = Color.gray;
     }
 
     public void CreateDimensions ()
