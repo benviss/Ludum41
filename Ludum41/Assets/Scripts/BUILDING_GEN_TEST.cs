@@ -10,23 +10,47 @@ public class BUILDING_GEN_TEST : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        float seed = Random.Range(0, 50);
+
         for (int i = 0; i < 400; i++)
         {
             //Set to pick a random building
             int rand = Random.Range(0, building.Length);
+            int result = (int)(Mathf.PerlinNoise(rand / 5.0f + seed, rand / 5.0f + seed) * 10);
 
             //Randomly places buildings throughout the map
             Vector3 offset = new Vector3(Random.Range(-50.0f, 50.0f), 0, Random.Range(-50.0f, 50.0f));
-            //offset = Random.insideUnitSphere;
-            //offset.y = 0;
+
             offset = Check(offset, rand, 0);
 
             offset.y = 0;
 
             if (!IsOutOfBounds(offset))
             {
-                Building newBuilding = Instantiate(building[rand], offset, Quaternion.identity);
-                newBuilding.transform.parent = transform;
+                if (result < 2)
+                {
+                    Building newBuilding = Instantiate(building[0], offset, Quaternion.identity);
+                    newBuilding.transform.parent = transform;
+                    newBuilding.location = offset;
+                }
+                if (result < 4)
+                {
+                    Building newBuilding = Instantiate(building[1], offset, Quaternion.identity);
+                    newBuilding.transform.parent = transform;
+                    newBuilding.location = offset;
+                }
+                if (result < 6)
+                {
+                    Building newBuilding = Instantiate(building[2], offset, Quaternion.identity);
+                    newBuilding.transform.parent = transform;
+                    newBuilding.location = offset;
+                }
+                if (result < 8)
+                {
+                    Building newBuilding = Instantiate(building[3], offset, Quaternion.identity);
+                    newBuilding.transform.parent = transform;
+                    newBuilding.location = offset;
+                }
             }
         }
     }

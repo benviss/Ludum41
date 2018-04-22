@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 55048cab2e89b0d40a55fea968135e78
-timeCreated: 1524366487
+guid: aeb86293cd3b3a9449bbbf0e6605466f
+timeCreated: 1524427476
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Gas
+    100000: FoodHutBroken
     100002: //RootNode
-    400000: Gas
+    400000: FoodHutBroken
     400002: //RootNode
     2100000: palette
-    2300000: Gas
-    3300000: Gas
-    4300000: Gas
+    2300000: FoodHutBroken
+    3300000: FoodHutBroken
+    4300000: FoodHutBroken
   externalObjects: {}
   materials:
     importMaterials: 1
