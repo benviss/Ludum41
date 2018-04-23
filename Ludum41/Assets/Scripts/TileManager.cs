@@ -30,8 +30,8 @@ public class TileManager : MonoBehaviour {
 
     void AddTiles()
     {
-        float scale = 2f;
-        float scale2 = 1.0f;
+        float scale = 5f;
+        float scale2 = 2.2f;
         for (int y = 0; y < range; y++)
         {
             for (int x = 0; x < range; x++)
@@ -39,7 +39,7 @@ public class TileManager : MonoBehaviour {
                 int _x = x + (int)offset.x;
                 int _y = y + (int)offset.y;
                 float result = (Mathf.PerlinNoise(_x / scale + seed, _y / scale + seed) * scale2 * tileSize);
-                result = Mathf.Pow(result, .55f);
+                result = Mathf.Pow(result, .6f);
                 Vector3 pos = new Vector3(((_x - range *.5f) * tileSize), 0, ((_y - range * .5f) * tileSize));
 
                 TileBlock newTile = Instantiate(Tile, transform);
