@@ -59,7 +59,6 @@ public class Projectile : MonoBehaviour
         if (damageableObject != null)
         {
             damageableObject.TakeHit(damage, hitPoint, transform.forward);
-            Debug.Log("HIT");
         }
         if (projectileExplosion != null) {
             Destroy(Instantiate(projectileExplosion.gameObject, hitPoint, transform.rotation) as GameObject, projectileExplosion.startLifetime);

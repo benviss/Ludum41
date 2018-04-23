@@ -7,7 +7,7 @@ using UnityEngine.AI;
 //[RequireComponent(typeof(Renderer))]
 public class Enemy : LivingEntity {
 
-    NavMeshAgent pathfinder;
+    public NavMeshAgent pathfinder;
     Transform playerTrans;
     public Player player;
     Vector3 target;
@@ -16,6 +16,8 @@ public class Enemy : LivingEntity {
     //public GameObject weapon;
     public bool isFleeing = false;
     public float range = 0;
+    public float runDist = 30;
+    public float attackDist = 100;
     public float difficulty;
     float updatePathTime = .1f;
     float lastUpdateTime = 0;
@@ -26,7 +28,10 @@ public class Enemy : LivingEntity {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        pathfinder = GetComponent<NavMeshAgent>();
+        if (pathfinder == null)
+        {
+            pathfinder = GetComponent<NavMeshAgent>();
+        }
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
 
         //myMat = GetComponent<Renderer>().material;
@@ -77,10 +82,17 @@ public class Enemy : LivingEntity {
         Vector3 direction = transform.position - playerTrans.position;
         if (isFleeing)
         {
-            // RUNNN AWAYY
-            target = transform.position + direction.normalized * 5;
+            if (direction.magnitude < runDist)
+            {
+                // RUNNN AWAYY
+                target = transform.position + direction.normalized * 5;
+            }
+            else
+            {
+                target = transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+            }
         }
-        else
+        else if (direction.magnitude < attackDist)
         {
             target = playerTrans.position + direction.normalized * range;
 
@@ -88,6 +100,10 @@ public class Enemy : LivingEntity {
             {
                 Attack();
             }
+        }
+        else
+        {
+            target = transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
         }
     }
 
