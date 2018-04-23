@@ -32,9 +32,11 @@ public class Building : LivingEntity
 
     void SwapModels()
     {
+        if (!DeadBuilding.active) {
+            Instantiate(dyingBuildingEffects, DeadBuilding.transform);
+        }
         FullBuilding.SetActive(false);
         DeadBuilding.SetActive(true);
-        Instantiate(dyingBuildingEffects, DeadBuilding.transform);
     }
 
 

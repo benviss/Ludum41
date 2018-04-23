@@ -246,7 +246,9 @@ MonoBehaviour:
   DeadBuilding: {fileID: 1247030588177468}
   location: {x: 0, y: 0, z: 0}
   deathTime: 1
-  deadBuildingEffects: {fileID: 1072817098918444, guid: 9876c22d231b98f4394b330e145ec90e,
+  dyingBuildingEffects: {fileID: 1072817098918444, guid: 9876c22d231b98f4394b330e145ec90e,
+    type: 2}
+  deadBuildingEffects: {fileID: 1990300003516712, guid: 525b035fdd367db4aac5701ef16f10b5,
     type: 2}
 --- !u!208 &208030282448723338
 NavMeshObstacle:
