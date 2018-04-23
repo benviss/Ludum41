@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     float lifetime = 3;
     float skinWidth = .1f;
 
+    public ParticleSystem projectileExplosion;
+
     void Start()
     {
         Destroy(gameObject, lifetime);
@@ -58,6 +60,9 @@ public class Projectile : MonoBehaviour
         {
             damageableObject.TakeHit(damage, hitPoint, transform.forward);
             Debug.Log("HIT");
+        }
+        if (projectileExplosion != null) {
+            Destroy(Instantiate(projectileExplosion.gameObject, hitPoint, transform.rotation) as GameObject, projectileExplosion.startLifetime);
         }
         GameObject.Destroy(gameObject);
     }

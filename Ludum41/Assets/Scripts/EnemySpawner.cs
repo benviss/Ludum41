@@ -61,8 +61,8 @@ public class EnemySpawner : MonoBehaviour {
 
     int weaponIndex = (int)Random.Range(0, (currentLevel <= AvailableWeapons.Length) ? currentLevel : AvailableWeapons.Length);
 
-    weapon.Equipweapon(AvailableWeapons[weaponIndex]);
-    //weapon.Equipweapon(AvailableWeapons[4]);
+    //weapon.Equipweapon(AvailableWeapons[weaponIndex]);
+    weapon.Equipweapon(AvailableWeapons[4]);
     //if (currentLevel < 4) {
     //  weapon.Equipweapon(0);
     //} else if (currentLevel < 6) {
