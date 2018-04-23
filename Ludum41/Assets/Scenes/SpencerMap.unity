@@ -275,8 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tile: {fileID: 114161946604914602, guid: b1b10322b9e74274188a6c4040514fb9, type: 2}
   tileSize: 100
-  range: 5
-  seed: 8
+  range: 12
+  seed: 2
   offset: {x: 0, y: 0}
 --- !u!4 &1449176311
 Transform:
