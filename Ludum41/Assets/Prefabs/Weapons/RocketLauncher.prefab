@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  range: 30
+  range: 70
   meleeTime: 0
   meleeCooldown: 0
   ranged: 1

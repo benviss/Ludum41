@@ -14,6 +14,9 @@ public class Building : LivingEntity
     public float deathTime = 1.0f;
     public GameObject dyingBuildingEffects;
     public GameObject deadBuildingEffects;
+    public int peopleToSpawn;
+    public EnemySpawner Spawner;
+
 
     // Use this for initialization
     void Start()
@@ -45,5 +48,16 @@ public class Building : LivingEntity
         Destroy(Instantiate(deadBuildingEffects, DeadBuilding.transform.position, DeadBuilding.transform.rotation) as GameObject,10);
         
         Destroy(gameObject, deathTime);
+
+        SpawnPpl(peopleToSpawn);
+    }
+
+    private void SpawnPpl(int num)
+    {
+        Spawner = Instantiate(Spawner, transform);
+        Spawner.transform.position = Vector3.up * 10 +transform.position;
+        Spawner.maxSpawnNumber = num;
+        Spawner.totalSpawns = num;
+        Destroy(Spawner, 1f);
     }
 }

@@ -10,7 +10,7 @@ public class Player : LivingEntity
     public float moveSpeed = 7;
     public float baseAttackRange = 1;
     public float attackRange = 1;
-    public float attackSpeed = .75f;
+    public float attackSpeed = .5f;
     public float size = 1;
     Rigidbody rb;
 
@@ -23,7 +23,6 @@ public class Player : LivingEntity
     CameraFollow cameraFollow;
     Camera viewCamera;
     PlayerController controller;
-
     public HealthBar healthBar;
 
     protected override void Start()
@@ -101,6 +100,9 @@ public class Player : LivingEntity
 
     public void Attack()
     {
+        //FindObjectOfType<NewAudioManager>().Play("monstercri");
+        NewAudioManager.instance.Play("monstercri");
+        
         //StartCoroutine(AnimateAttack());
         //AudioManager.instance.PlaySound(attackAudio, transform.position);
         foreach (var item in arms) {
@@ -112,16 +114,16 @@ public class Player : LivingEntity
             IDamageable damageableObject = item.GetComponent<IDamageable>();
             if (damageableObject != null) {
                 item.GetComponent<LivingEntity>().OnDeath += AddMass;
-                damageableObject.TakeHit(10, item.GetComponent<LivingEntity>().transform.position, transform.forward);
+                damageableObject.TakeHit(8*size, item.GetComponent<LivingEntity>().transform.position, transform.forward);
             }
         }
     }
 
     void AddMass()
     {
-        health += 1;
+        health += 3;
         if (health > .9f * rb.mass) {
-            rb.mass += 1;
+            rb.mass += 3;
             CalcShizzle();
             GameManager.Instance.UpdateUI();
         }

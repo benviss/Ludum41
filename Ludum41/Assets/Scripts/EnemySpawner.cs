@@ -11,6 +11,9 @@ public class EnemySpawner : MonoBehaviour {
     public float minSpawnTime = 0;
     public float maxSpawnTime = 0;
     public float maxSpawnNumber = 0;
+    public float totalSpawns = 0;
+    public float spawnRange;
+    public bool setParent;
 
   public Weapon[] AvailableWeapons;
   public List<GameObject> EnemyPool = new List<GameObject>();
@@ -30,9 +33,12 @@ public class EnemySpawner : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if ((currentSpawned < maxSpawnNumber + (GameManager.Instance.currentLevel * 5)) && (Time.time > nextSpawnTime))
+        if ((currentSpawned < maxSpawnNumber + (GameManager.Instance.currentLevel * 3)) && (Time.time > nextSpawnTime))
         {
-            SpawnEnemy();
+            if (totalSpawns > 0)
+            {
+                SpawnEnemy();
+            }
             nextSpawnTime = Time.time + WaitTime();
         }
         if (GameManager.Instance.currentLevel >= hardEnemiesLevel && HarderEnemies.Count > 0) {
@@ -43,7 +49,9 @@ public class EnemySpawner : MonoBehaviour {
 
     private float WaitTime()
     {
-        return Random.Range(minSpawnTime - GameManager.Instance.currentLevel, maxSpawnTime - GameManager.Instance.currentLevel);
+        float newMax = (maxSpawnTime - GameManager.Instance.currentLevel);
+        newMax = Mathf.Clamp(newMax, maxSpawnTime * .4f, maxSpawnTime);
+        return Random.Range(minSpawnTime/GameManager.Instance.currentLevel, newMax);
     }
 
     private void SpawnEnemy()
@@ -51,8 +59,12 @@ public class EnemySpawner : MonoBehaviour {
     float currentLevel = GameManager.Instance.currentLevel;
     int enemyDifficultyIndex = (int)Random.Range(0, (currentLevel <= EnemyPool.Count) ? currentLevel : EnemyPool.Count);
 
-    GameObject newEnemy = Instantiate(EnemyPool[enemyDifficultyIndex], transform);
-        Vector3 pos = Random.onUnitSphere;
+    GameObject newEnemy = Instantiate(EnemyPool[enemyDifficultyIndex]);
+        if (setParent)
+        {
+            newEnemy.transform.parent = transform;
+        }
+        Vector3 pos = Random.onUnitSphere *spawnRange;
         pos.y = .1f;
         // newEnemy.transform.position = pos;
         WeaponController weapon = newEnemy.GetComponent<WeaponController>();
@@ -75,7 +87,8 @@ public class EnemySpawner : MonoBehaviour {
     //  weapon.Equipweapon(3);
     //}
 
-    currentSpawned++;
+        currentSpawned++;
+        totalSpawns--;
         script.OnDeath += OnChildDeath;
         script.player = player;
         script.difficulty = currentLevel;
