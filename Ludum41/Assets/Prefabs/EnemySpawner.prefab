@@ -54,9 +54,9 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc,
     type: 2}
   minSpawnTime: 4
-  maxSpawnTime: 10
+  maxSpawnTime: 15
   maxSpawnNumber: 2
-  totalSpawns: 100
+  totalSpawns: 70
   spawnRange: 50
   setParent: 1
   AvailableWeapons:
