@@ -51,8 +51,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bcd8d84f3defc44cae6b3eb47e03585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 1428334623221750, guid: 0bb5739f603e7444f8c2895e9bbdda88,
+  EnemyPrefab: {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc,
     type: 2}
-  minSpawnTime: 0
-  maxSpawnTime: 5
+  minSpawnTime: 4
+  maxSpawnTime: 10
   maxSpawnNumber: 20
+  AvailableWeapons:
+  - {fileID: 114899164029619296, guid: 37daa6e6813c28f40a2298eaa37ced8c, type: 2}
+  - {fileID: 114056974981344412, guid: 5c8d63a48d6f12e4c82ae831eba640c0, type: 2}
+  - {fileID: 114455597625283830, guid: 72226ded7f95ddf489289ad6929fa17f, type: 2}
+  - {fileID: 114023662874285904, guid: d0a667dcfd110de42b1ceec1636fed5d, type: 2}
+  - {fileID: 114617345657074670, guid: 423c576a10d2acb42b37ca7686e46b63, type: 2}
+  EnemyPool:
+  - {fileID: 1887045684261594, guid: 8110b02ddc8bf194d89863cdbab61206, type: 2}
+  - {fileID: 1964740892303970, guid: c0c47241a022fea46bc03b95f9e4ae05, type: 2}
+  - {fileID: 1411879852553356, guid: 6b8f65c7ea1b6d34d9aba472dee29a2d, type: 2}
+  - {fileID: 1170287159908140, guid: b5cd2dc2c91750a4abc16536f2b81a87, type: 2}
+  HarderEnemies:
+  - {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc, type: 2}
+  - {fileID: 1339416880224670, guid: 5744d71a9eb043b45808ca11b35ed855, type: 2}
+  - {fileID: 1930420121875886, guid: ab9b14e267bd9bb458b38643d1278e87, type: 2}
+  - {fileID: 1773424333887300, guid: a73229e7476bbda46adfb5fb7b947386, type: 2}
+  hardEnemiesLevel: 4

@@ -21,6 +21,10 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (target == null)
+        {
+            return;
+        }
         Vector3 offset = CalcOffset();
         Vector3 unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .5f) * distance;
         float range = (unsmoothedPosition - transform.position).sqrMagnitude;

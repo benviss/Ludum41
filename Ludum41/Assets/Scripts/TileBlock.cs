@@ -13,7 +13,7 @@ public class TileBlock : MonoBehaviour
     public Color[] colors;
     float maxGrassDensity = 6.5f;
     float minBigBuildingDensity = 9;
-    //public EnemySpawner Spawner;
+    public EnemySpawner Spawner;
 
     // Use this for initialization
     void Start()
@@ -21,8 +21,8 @@ public class TileBlock : MonoBehaviour
         Random.InitState((int)seed);
         plane.transform.localScale = plane.transform.localScale * .1f * tileSize;
         plane.GetComponent<Renderer>().material.color = GetGroundColor();
-        // = Instantiate(Spawner, transform);
-        //Spawner.transform.parent = transform;
+        Spawner = Instantiate(Spawner, transform);
+        Spawner.transform.parent = transform;
 
         for (int i = 0; i < densityLevel; i++)
         {

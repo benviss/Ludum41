@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -53,13 +54,14 @@ public class EnemySpawner : MonoBehaviour {
     GameObject newEnemy = Instantiate(EnemyPool[enemyDifficultyIndex], transform);
         Vector3 pos = Random.onUnitSphere;
         pos.y = .1f;
-        newEnemy.transform.localPosition = pos;
 
         WeaponController weapon = newEnemy.GetComponent<WeaponController>();
         Enemy script = newEnemy.GetComponent<Enemy>();
+        script.pathfinder = script.GetComponent<NavMeshAgent>();
+        script.pathfinder.Warp(pos);
 
 
-    int weaponIndex = (int)Random.Range(0, (currentLevel <= AvailableWeapons.Length) ? currentLevel : AvailableWeapons.Length);
+        int weaponIndex = (int)Random.Range(0, (currentLevel <= AvailableWeapons.Length) ? currentLevel : AvailableWeapons.Length);
 
     //weapon.Equipweapon(AvailableWeapons[weaponIndex]);
     weapon.Equipweapon(AvailableWeapons[4]);
