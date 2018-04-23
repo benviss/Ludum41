@@ -19,7 +19,7 @@ public class Enemy : LivingEntity {
     public float runDist = 30;
     public float attackDist = 100;
     public float difficulty;
-    float updatePathTime = .1f;
+    float updatePathTime = .5f;
     float lastUpdateTime = 0;
     WeaponController weaponController;
 
@@ -44,12 +44,17 @@ public class Enemy : LivingEntity {
     // Update is called once per frame
     void Update()
     {
-        if (lastUpdateTime + updatePathTime < Time.time)
+        if (pathfinder.isOnNavMesh)
         {
-            lastUpdateTime = Time.time;
-            UpdateTarget();
-            pathfinder.SetDestination(target);
-            SetFleeingStatus();
+
+            if (lastUpdateTime + updatePathTime < Time.time)
+            {
+                lastUpdateTime = Time.time;
+                UpdateTarget();
+
+                pathfinder.SetDestination(target);
+                SetFleeingStatus();
+            }
         }
 
         // Draw Target Loc
