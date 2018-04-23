@@ -48,17 +48,18 @@ public class Building : LivingEntity
         Destroy(Instantiate(deadBuildingEffects, DeadBuilding.transform.position, DeadBuilding.transform.rotation) as GameObject,10);
         
         Destroy(gameObject, deathTime);
+        Destroy(gameObject.GetComponent<BoxCollider>());
 
         SpawnPpl(peopleToSpawn);
+        dead = true;
     }
 
     private void SpawnPpl(int num)
     {
         NewAudioManager.instance.Play("kids");
-        Spawner = Instantiate(Spawner, transform);
-        Spawner.transform.position = Vector3.up * 10 +transform.position;
+        Spawner = Instantiate(Spawner);
+        Spawner.transform.position = transform.position;
         Spawner.maxSpawnNumber = num;
         Spawner.totalSpawns = num;
-        Destroy(Spawner, 1f);
     }
 }

@@ -53,11 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 1672020449828534, guid: 5798e162a90cf1c42b50addd49cef3dc,
     type: 2}
-  minSpawnTime: 0
-  maxSpawnTime: 0
+  minSpawnTime: 0.1
+  maxSpawnTime: 0.1
   maxSpawnNumber: 2
-  spawnRange: 1
-  setParent: 0
+  totalSpawns: 0
+  spawnRange: 2
   AvailableWeapons:
   - {fileID: 114899164029619296, guid: 37daa6e6813c28f40a2298eaa37ced8c, type: 2}
   EnemyPool:

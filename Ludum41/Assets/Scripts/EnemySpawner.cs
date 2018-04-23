@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour {
     public float maxSpawnNumber = 0;
     public float totalSpawns = 0;
     public float spawnRange;
-    public bool setParent;
 
   public Weapon[] AvailableWeapons;
   public List<GameObject> EnemyPool = new List<GameObject>();
@@ -60,12 +59,9 @@ public class EnemySpawner : MonoBehaviour {
     int enemyDifficultyIndex = (int)Random.Range(0, (currentLevel <= EnemyPool.Count) ? currentLevel : EnemyPool.Count);
 
     GameObject newEnemy = Instantiate(EnemyPool[enemyDifficultyIndex]);
-        if (setParent)
-        {
-            newEnemy.transform.parent = transform;
-        }
+        newEnemy.transform.parent = transform;
         Vector3 pos = Random.onUnitSphere *spawnRange;
-        pos.y = .1f;
+        pos.y = 0f;
         // newEnemy.transform.position = pos;
         WeaponController weapon = newEnemy.GetComponent<WeaponController>();
         Enemy script = newEnemy.GetComponent<Enemy>();
@@ -97,5 +93,10 @@ public class EnemySpawner : MonoBehaviour {
     private void OnChildDeath()
     {
         currentSpawned--;
+
+        if ((currentSpawned <= 0) && (totalSpawns <= 0))
+        {
+            Destroy(gameObject);
+        }
     }
 }

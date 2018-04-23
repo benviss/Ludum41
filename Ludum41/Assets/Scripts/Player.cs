@@ -19,7 +19,7 @@ public class Player : LivingEntity
     public GameObject[] arms;
     public GameObject[] legs;
     public float lastAttack;
-
+    float baseDamage = 10;
     CameraFollow cameraFollow;
     Camera viewCamera;
     PlayerController controller;
@@ -126,7 +126,7 @@ public class Player : LivingEntity
                 if (damageableObject != null)
                 {
                     item.GetComponent<LivingEntity>().OnDeath += AddMass;
-                    damageableObject.TakeHit(8 * size, item.GetComponent<LivingEntity>().transform.position, transform.forward);
+                    damageableObject.TakeHit(baseDamage * size, item.GetComponent<LivingEntity>().transform.position, transform.forward);
                 }
             }
         }

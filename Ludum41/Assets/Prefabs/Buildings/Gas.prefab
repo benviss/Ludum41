@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4395860208256100}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GasBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4845579068130726}
   - component: {fileID: 33963203714189988}
   - component: {fileID: 23301823430464452}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Gas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4172108280521520}
   - component: {fileID: 33652475408811236}
   - component: {fileID: 23635798437900898}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GasBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb3500d5edf4e94ea27dd52404b6871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 140
   width: 6
   length: 10
   height: 6
