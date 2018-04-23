@@ -114,6 +114,21 @@ public class Enemy : LivingEntity {
 
     void Attack()
     {
+        if (range > 50)
+        {
+            if (GameManager.Instance.CanAkbar())
+            {
+                if (Random.Range(0, 100) < 85)
+                {
+                    NewAudioManager.instance.Play("airhorn");
+                }
+                else
+                {
+                    NewAudioManager.instance.Play("akbar");
+                }
+            }
+        }
+
         Vector3 targetPos = playerTrans.position;
         targetPos.y = transform.position.y;
         transform.LookAt(targetPos);

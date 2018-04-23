@@ -15,7 +15,7 @@ public class NewAudioManager : MonoBehaviour {
 
         if (instance == null)
         {
-      //      instance = this;
+            instance = this;
         }
         else
         {
@@ -50,6 +50,7 @@ public class NewAudioManager : MonoBehaviour {
             Debug.LogWarning("Sound: " + name + "not found!");
             return;
         }
+
         s.source.Play();
     }
 }

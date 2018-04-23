@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7f0510a7fef2e784aa7ea89170410625, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.69758123, g: 0.7036426, b: 0.7080525, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -180,8 +180,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 232688666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalPosition: {x: -50, y: 0, z: -50}
+  m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 1449176311}
   m_RootOrder: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tile: {fileID: 114161946604914602, guid: b1b10322b9e74274188a6c4040514fb9, type: 2}
   tileSize: 100
-  range: 4
+  range: 5
   seed: 2
   offset: {x: 0, y: 0}
 --- !u!4 &1449176311
@@ -357,6 +357,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1615188702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1615188704}
+  - component: {fileID: 1615188703}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1615188703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1615188702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1687bfdc46fae4aa83ed6fc341562b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 7c96864e81e38b54aafb42fe79080004, type: 3}
+    volume: 0.534
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: monstercri
+    clip: {fileID: 8300000, guid: 8a4cade0730c0924295d5fc6b3bde751, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: airhorn
+    clip: {fileID: 8300000, guid: 352a9285184c4dd4c83b5fa385b58ecd, type: 3}
+    volume: 0.514
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: kids
+    clip: {fileID: 8300000, guid: e7c768b790ae4d340a711ffe7150d44f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: akbar
+    clip: {fileID: 8300000, guid: fa9a7ee014025f945890f748e6f068db, type: 3}
+    volume: 0.646
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ree
+    clip: {fileID: 8300000, guid: 0c20fc182f919ae41a96d4f488abc276, type: 3}
+    volume: 0.879
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1615188704
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1615188702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009607226
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     float enemiesKilled = 0;
     float enemiesPerLevel = 10;
     public HealthBar healthBar;
+    float nextAkbar = 0;
 
     // Update is called once per frame
     void Update()
@@ -44,5 +45,15 @@ public class GameManager : Singleton<GameManager>
         if (enemiesKilled > currentLevel * enemiesPerLevel) {
             currentLevel++;
         }
+    }
+
+    public bool CanAkbar()
+    {
+        if (Time.time > nextAkbar)
+        {
+            nextAkbar = Time.time +10;
+            return true;
+        }
+        return false;
     }
 }

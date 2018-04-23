@@ -56,6 +56,7 @@ MonoBehaviour:
   minSpawnTime: 4
   maxSpawnTime: 10
   maxSpawnNumber: 2
+  totalSpawns: 100
   spawnRange: 50
   setParent: 1
   AvailableWeapons:

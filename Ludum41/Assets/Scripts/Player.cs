@@ -101,7 +101,15 @@ public class Player : LivingEntity
     public void Attack()
     {
         //FindObjectOfType<NewAudioManager>().Play("monstercri");
-        NewAudioManager.instance.Play("monstercri");
+
+        if (Random.Range(0, 100) < 98)
+        {
+            NewAudioManager.instance.Play("monstercri");
+        }
+        else
+        {
+            NewAudioManager.instance.Play("ree");
+        }
         
         //StartCoroutine(AnimateAttack());
         //AudioManager.instance.PlaySound(attackAudio, transform.position);
@@ -110,11 +118,16 @@ public class Player : LivingEntity
         }
         lastAttack = Time.time;
         List<GameObject> toAttack = attackCone.GetCollided();
-        foreach (var item in toAttack) {
-            IDamageable damageableObject = item.GetComponent<IDamageable>();
-            if (damageableObject != null) {
-                item.GetComponent<LivingEntity>().OnDeath += AddMass;
-                damageableObject.TakeHit(8*size, item.GetComponent<LivingEntity>().transform.position, transform.forward);
+        foreach (var item in toAttack)
+        {
+            if (item != null)
+            {
+                IDamageable damageableObject = item.GetComponent<IDamageable>();
+                if (damageableObject != null)
+                {
+                    item.GetComponent<LivingEntity>().OnDeath += AddMass;
+                    damageableObject.TakeHit(8 * size, item.GetComponent<LivingEntity>().transform.position, transform.forward);
+                }
             }
         }
     }
