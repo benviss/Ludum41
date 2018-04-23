@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public LayerMask collisionMask;
     public Color trailColour;
     float speed = 10;
-    float damage = 1;
+    public float damage = 1;
 
     float lifetime = 3;
     float skinWidth = .1f;
@@ -53,8 +53,6 @@ public class Projectile : MonoBehaviour
 
     void OnHitObject(Collider c, Vector3 hitPoint)
     {
-        Debug.Log("OnHitObject");
-
         IDamageable damageableObject = c.GetComponent<IDamageable>();
         if (damageableObject != null)
         {

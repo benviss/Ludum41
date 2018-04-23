@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AudioManager))]
+//[RequireComponent(typeof(AudioManager))]
 public class GameManager : Singleton<GameManager>
 {
     public float currentLevel = 3;

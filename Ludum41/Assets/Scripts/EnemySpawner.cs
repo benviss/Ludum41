@@ -11,6 +11,9 @@ public class EnemySpawner : MonoBehaviour {
     public float minSpawnTime = 0;
     public float maxSpawnTime = 0;
     public float maxSpawnNumber = 0;
+    public float totalSpawns = 0;
+    public float spawnRange;
+    public bool setParent;
 
   public Weapon[] AvailableWeapons;
   public List<GameObject> EnemyPool = new List<GameObject>();
@@ -30,20 +33,25 @@ public class EnemySpawner : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if ((currentSpawned < maxSpawnNumber + (GameManager.Instance.currentLevel * 5)) && (Time.time > nextSpawnTime))
+        if ((currentSpawned < maxSpawnNumber + (GameManager.Instance.currentLevel * 3)) && (Time.time > nextSpawnTime))
         {
-            SpawnEnemy();
+            if (totalSpawns > 0)
+            {
+                SpawnEnemy();
+            }
             nextSpawnTime = Time.time + WaitTime();
         }
-    if (GameManager.Instance.currentLevel >= hardEnemiesLevel && HarderEnemies.Count > 0) {
-      EnemyPool.AddRange(HarderEnemies);
-      HarderEnemies.Clear();
-    }
+        if (GameManager.Instance.currentLevel >= hardEnemiesLevel && HarderEnemies.Count > 0) {
+          EnemyPool.AddRange(HarderEnemies);
+          HarderEnemies.Clear();
+        }
 	}
 
     private float WaitTime()
     {
-        return Random.Range(minSpawnTime - GameManager.Instance.currentLevel, maxSpawnTime - GameManager.Instance.currentLevel);
+        float newMax = (maxSpawnTime - GameManager.Instance.currentLevel);
+        newMax = Mathf.Clamp(newMax, maxSpawnTime * .4f, maxSpawnTime);
+        return Random.Range(minSpawnTime/GameManager.Instance.currentLevel, newMax);
     }
 
     private void SpawnEnemy()
@@ -51,20 +59,24 @@ public class EnemySpawner : MonoBehaviour {
     float currentLevel = GameManager.Instance.currentLevel;
     int enemyDifficultyIndex = (int)Random.Range(0, (currentLevel <= EnemyPool.Count) ? currentLevel : EnemyPool.Count);
 
-    GameObject newEnemy = Instantiate(EnemyPool[enemyDifficultyIndex], transform);
-        Vector3 pos = Random.onUnitSphere;
+    GameObject newEnemy = Instantiate(EnemyPool[enemyDifficultyIndex]);
+        if (setParent)
+        {
+            newEnemy.transform.parent = transform;
+        }
+        Vector3 pos = Random.onUnitSphere *spawnRange;
         pos.y = .1f;
-
+        // newEnemy.transform.position = pos;
         WeaponController weapon = newEnemy.GetComponent<WeaponController>();
         Enemy script = newEnemy.GetComponent<Enemy>();
         script.pathfinder = script.GetComponent<NavMeshAgent>();
-        script.pathfinder.Warp(pos);
+        script.pathfinder.Warp(transform.position+pos);
 
 
         int weaponIndex = (int)Random.Range(0, (currentLevel <= AvailableWeapons.Length) ? currentLevel : AvailableWeapons.Length);
 
-    //weapon.Equipweapon(AvailableWeapons[weaponIndex]);
-    weapon.Equipweapon(AvailableWeapons[4]);
+    weapon.Equipweapon(AvailableWeapons[weaponIndex]);
+    //weapon.Equipweapon(AvailableWeapons[4]);
     //if (currentLevel < 4) {
     //  weapon.Equipweapon(0);
     //} else if (currentLevel < 6) {
@@ -75,7 +87,8 @@ public class EnemySpawner : MonoBehaviour {
     //  weapon.Equipweapon(3);
     //}
 
-    currentSpawned++;
+        currentSpawned++;
+        totalSpawns--;
         script.OnDeath += OnChildDeath;
         script.player = player;
         script.difficulty = currentLevel;

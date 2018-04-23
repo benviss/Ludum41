@@ -246,8 +246,12 @@ MonoBehaviour:
   DeadBuilding: {fileID: 1294386279480762}
   location: {x: 0, y: 0, z: 0}
   deathTime: 1
-  deadBuildingEffects: {fileID: 1597852430058704, guid: 044bea1926b70664abb71fb479749d3b,
+  dyingBuildingEffects: {fileID: 1597852430058704, guid: 044bea1926b70664abb71fb479749d3b,
     type: 2}
+  deadBuildingEffects: {fileID: 1990300003516712, guid: 525b035fdd367db4aac5701ef16f10b5,
+    type: 2}
+  peopleToSpawn: 15
+  Spawner: {fileID: 114581828536275998, guid: d001fc27c5606c54997027d9a85b5c12, type: 2}
 --- !u!208 &208512714894524108
 NavMeshObstacle:
   m_ObjectHideFlags: 1
