@@ -238,8 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb3500d5edf4e94ea27dd52404b6871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 200
-  health: 0
+  startingHealth: 30
   width: 10.5
   length: 10.5
   height: 6
@@ -247,7 +246,8 @@ MonoBehaviour:
   DeadBuilding: {fileID: 1294386279480762}
   location: {x: 0, y: 0, z: 0}
   deathTime: 1
-  population: 0
+  deadBuildingEffects: {fileID: 1597852430058704, guid: 044bea1926b70664abb71fb479749d3b,
+    type: 2}
 --- !u!208 &208512714894524108
 NavMeshObstacle:
   m_ObjectHideFlags: 1
