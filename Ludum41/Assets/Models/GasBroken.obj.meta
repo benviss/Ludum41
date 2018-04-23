@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 0a3a07584f28f224e8e70646815e958c
-timeCreated: 1524437955
+guid: 375c4af0684f2894e8d8f30b87f82849
+timeCreated: 1524428236
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: DragonThingArmsRightForeArm
+    100000: GasBroken
     100002: //RootNode
-    400000: DragonThingArmsRightForeArm
+    400000: GasBroken
     400002: //RootNode
     2100000: palette
-    2300000: DragonThingArmsRightForeArm
-    3300000: DragonThingArmsRightForeArm
-    4300000: DragonThingArmsRightForeArm
+    2300000: GasBroken
+    3300000: GasBroken
+    4300000: GasBroken
   externalObjects: {}
   materials:
     importMaterials: 1

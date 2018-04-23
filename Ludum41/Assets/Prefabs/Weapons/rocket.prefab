@@ -169,5 +169,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   trailColour: {r: 0, g: 0, b: 0, a: 0}
-  projectileExplosion: {fileID: 198537309949449064, guid: 1d4e18ebd18df1744af12abe899691f3,
-    type: 2}

@@ -33,7 +33,6 @@ public class Enemy : LivingEntity {
         target = transform.position;
         weaponController = GetComponent<WeaponController>();
         range = weaponController.GetWeaponRange();
-        pathfinder.Warp(transform.position);
 
 	}
 
