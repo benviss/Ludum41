@@ -35,10 +35,10 @@ public class EnemySpawner : MonoBehaviour {
             SpawnEnemy();
             nextSpawnTime = Time.time + WaitTime();
         }
-    if (GameManager.Instance.currentLevel >= hardEnemiesLevel && HarderEnemies.Count > 0) {
-      EnemyPool.AddRange(HarderEnemies);
-      HarderEnemies.Clear();
-    }
+        if (GameManager.Instance.currentLevel >= hardEnemiesLevel && HarderEnemies.Count > 0) {
+          EnemyPool.AddRange(HarderEnemies);
+          HarderEnemies.Clear();
+        }
 	}
 
     private float WaitTime()
@@ -54,17 +54,17 @@ public class EnemySpawner : MonoBehaviour {
     GameObject newEnemy = Instantiate(EnemyPool[enemyDifficultyIndex], transform);
         Vector3 pos = Random.onUnitSphere;
         pos.y = .1f;
-
+        // newEnemy.transform.position = pos;
         WeaponController weapon = newEnemy.GetComponent<WeaponController>();
         Enemy script = newEnemy.GetComponent<Enemy>();
         script.pathfinder = script.GetComponent<NavMeshAgent>();
-        script.pathfinder.Warp(pos);
+        script.pathfinder.Warp(transform.position+pos);
 
 
         int weaponIndex = (int)Random.Range(0, (currentLevel <= AvailableWeapons.Length) ? currentLevel : AvailableWeapons.Length);
 
-    //weapon.Equipweapon(AvailableWeapons[weaponIndex]);
-    weapon.Equipweapon(AvailableWeapons[4]);
+    weapon.Equipweapon(AvailableWeapons[weaponIndex]);
+    //weapon.Equipweapon(AvailableWeapons[4]);
     //if (currentLevel < 4) {
     //  weapon.Equipweapon(0);
     //} else if (currentLevel < 6) {

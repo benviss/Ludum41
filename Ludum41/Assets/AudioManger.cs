@@ -14,7 +14,7 @@ public class AudioManger : MonoBehaviour {
 
         if (instance == null)
         {
-            instance = this;
+            //instance = this;
         }
         else
         {
