@@ -60,6 +60,15 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1961048644880956
+  - component: {fileID: 4305250060368806}
+  m_Layer: 0
+  m_Name: BigBuildingBroke
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!1 &1961048644880956
 GameObject:
@@ -238,7 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb3500d5edf4e94ea27dd52404b6871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 500
+  health: 0
   width: 20
   length: 20
   height: 20
@@ -246,6 +256,7 @@ MonoBehaviour:
   DeadBuilding: {fileID: 1247030588177468}
   location: {x: 0, y: 0, z: 0}
   deathTime: 1
+  population: 0
 --- !u!208 &208030282448723338
 NavMeshObstacle:
   m_ObjectHideFlags: 1
