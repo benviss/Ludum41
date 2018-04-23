@@ -11,9 +11,9 @@ public class TileBlock : MonoBehaviour
     public GameObject plane;
     public float seed;
     public Color[] colors;
-    float maxGrassDensity = 6.5f;
-    float minBigBuildingDensity = 9;
-    //public EnemySpawner Spawner;
+    float maxGrassDensity = 6;
+    float minBigBuildingDEnsity = 8;
+    public EnemySpawner Spawner;
 
     // Use this for initialization
     void Start()
@@ -21,8 +21,8 @@ public class TileBlock : MonoBehaviour
         Random.InitState((int)seed);
         plane.transform.localScale = plane.transform.localScale * .1f * tileSize;
         plane.GetComponent<Renderer>().material.color = GetGroundColor();
-        // = Instantiate(Spawner, transform);
-        //Spawner.transform.parent = transform;
+        Spawner = Instantiate(Spawner, transform);
+        Spawner.transform.parent = transform;
 
         for (int i = 0; i < densityLevel; i++)
         {
@@ -30,7 +30,7 @@ public class TileBlock : MonoBehaviour
 
             //Set to pick a random building
             int maxBuild = building.Length;
-            if (densityLevel < minBigBuildingDensity)
+            if (densityLevel < minBigBuildingDEnsity)
             {
                 maxBuild--;
             }
@@ -39,14 +39,12 @@ public class TileBlock : MonoBehaviour
 
             //Randomly places buildings throughout the map
             Vector3 offset = new Vector3(Random.Range(tileSize * -.5f, tileSize * .5f), 0, Random.Range(tileSize * -.5f, tileSize * .5f));
-            //offset = Random.onUnitSphere;
-            //offset.y = 0;
             offset = Check(offset, rand, 0);
             offset.y = 0;
 
             if (!IsOutOfBounds(offset))
             {
-                Building newBuilding = Instantiate(building[rand]);
+                Building newBuilding = Instantiate(building[rand], transform.position, Quaternion.identity);
                 newBuilding.transform.parent = transform;
                 newBuilding.transform.localPosition = offset;
             }
@@ -56,7 +54,7 @@ public class TileBlock : MonoBehaviour
 
     private Vector3 Check(Vector3 offset, int buildingIndex, int attempt)
     {
-        if (attempt > 6)
+        if (attempt > 4)
         {
             return (Vector3.zero);
         }
@@ -81,7 +79,7 @@ public class TileBlock : MonoBehaviour
 
         Vector3 buildingSizeVector = new Vector3(building[buildingIndex].width, building[buildingIndex].length, building[buildingIndex].height);
 
-        Collider[] cols = Physics.OverlapBox(transform.position + offset, buildingSizeVector * .5f, Quaternion.identity, collisionMask);
+        Collider[] cols = Physics.OverlapBox(offset, buildingSizeVector * 0.5f, Quaternion.identity, collisionMask);
 
         if (cols.Length > 0)
         {
@@ -89,15 +87,13 @@ public class TileBlock : MonoBehaviour
             Vector3 offset3;
             foreach (Collider c in cols)
             {
-                //Debug.Log("COLLIDER: " + c.gameObject.name);
-
-                offset2 = c.transform.localPosition - offset;
+                offset2 = c.transform.position - offset;
                 offset2.y = 0;
                 offset3 = offset2.normalized * buildingSizeVector.magnitude * .25f;
                 offset -= offset3;
 
                 //Debug.Log("POS " + offset.ToString("F2"));
-                //Debug.Log("hit " + cols[0].transform.localPosition.ToString("F2"));
+                //Debug.Log("hit " + cols[0].transform.position.ToString("F2"));
                 //Debug.Log("moving " + offset3.ToString("F2"));
                 //Debug.Log("new pos " + (offset - offset3).ToString("F2"));
             }

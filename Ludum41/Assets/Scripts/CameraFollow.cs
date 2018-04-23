@@ -46,11 +46,15 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 cameraNormal = Quaternion.AngleAxis(tiltAngle, transform.right * -1) * transform.forward;
 
+        float dot = Vector3.Dot(player.transform.forward, cameraNormal);
         float dotRight = Vector3.Dot(player.transform.forward, transform.right);
-        dotRight = Mathf.Clamp(dotRight, -.75f, .75f);
-        dotRight *= Mathf.Abs(dotRight);
 
-        float rotateBy = dotRight * (new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized.magnitude) * 1.0f;
+        dot *= -1;
+        dot += 1;
+        dotRight = Mathf.Clamp(dotRight, -.8f, .8f);
+        distance = Mathf.Clamp(distance, 0.01f, .5f);
+        distance = Mathf.Pow(distance, .7f);
+        float rotateBy = dotRight * distance * 1.7f;
         rotateBy = Mathf.Clamp(rotateBy, -1.5f, 1.5f);
         Rotate(rotateBy);
 

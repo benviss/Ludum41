@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 55048cab2e89b0d40a55fea968135e78
-timeCreated: 1524428237
+guid: 3c603770d83e3d742b7a7ab026a340e8
+timeCreated: 1524437955
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Gas
+    100000: DragonThingArmsLeftForeArm
     100002: //RootNode
-    400000: Gas
+    400000: DragonThingArmsLeftForeArm
     400002: //RootNode
     2100000: palette
-    2300000: Gas
-    3300000: Gas
-    4300000: Gas
+    2300000: DragonThingArmsLeftForeArm
+    3300000: DragonThingArmsLeftForeArm
+    4300000: DragonThingArmsLeftForeArm
   externalObjects: {}
   materials:
     importMaterials: 1

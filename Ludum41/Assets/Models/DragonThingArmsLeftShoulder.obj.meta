@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: b4afdd134e92bc84b9c96d47813c9001
-timeCreated: 1524430972
+guid: f4cf85964eef9a74fa3a77e1d56dc3f6
+timeCreated: 1524437955
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: BigBuilding
+    100000: DragonThingArmsLeftShoulder
     100002: //RootNode
-    400000: BigBuilding
+    400000: DragonThingArmsLeftShoulder
     400002: //RootNode
     2100000: palette
-    2300000: BigBuilding
-    3300000: BigBuilding
-    4300000: BigBuilding
+    2300000: DragonThingArmsLeftShoulder
+    3300000: DragonThingArmsLeftShoulder
+    4300000: DragonThingArmsLeftShoulder
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -142,9 +142,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   building:
-  - {fileID: 114461435532850310, guid: 83a85e1cb8a881843a73512f200f60db, type: 2}
-  - {fileID: 114640409679860184, guid: 93a928e47fb37e54b9a52cd7dbd13a92, type: 2}
-  - {fileID: 114075148769502516, guid: 0f409897fd1217d46982b1c4dc8fb5a7, type: 2}
+  - {fileID: 114757745067750706, guid: 5f4742ecc11602847bcb7cd074e39828, type: 2}
+  - {fileID: 114946428726387684, guid: 10fad7afed64f9b45814ff2433b4b283, type: 2}
+  - {fileID: 114296840645664548, guid: 70088f7b5cd509d40aa46c168254076d, type: 2}
   densityLevel: 1
   tileSize: 10
   plane: {fileID: 1000129764079782}
@@ -152,3 +152,4 @@ MonoBehaviour:
   colors:
   - {r: 0.32435563, g: 0.71323526, b: 0.2727076, a: 0}
   - {r: 0.64705884, g: 0.6410214, b: 0.6280277, a: 0}
+  Spawner: {fileID: 114098768321919670, guid: a03dc7afc5bc6004ca45769c512e4324, type: 2}
