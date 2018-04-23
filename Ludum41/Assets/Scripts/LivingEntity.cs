@@ -5,7 +5,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
 {
 
     public float startingHealth;
-    public float MaxHealth;
     public float health { get; protected set; }
     protected bool dead;
 

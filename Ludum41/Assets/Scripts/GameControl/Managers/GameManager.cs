@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
     {
         player = FindObjectOfType<Player>();
 
-        if (player != null) {
+        if (player != null && healthBar != null) {
             healthBar.UpdateHealthBar(player);
         }
     }

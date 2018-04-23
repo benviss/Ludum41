@@ -136,6 +136,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4744477104122424}
+  - component: {fileID: 111926215169188290}
   m_Layer: 0
   m_Name: LeftArm
   m_TagString: Untagged
@@ -166,6 +167,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4055667080462682}
+  - component: {fileID: 111380993615512006}
   m_Layer: 0
   m_Name: RightArm
   m_TagString: Untagged
@@ -391,7 +393,7 @@ Transform:
   - {fileID: 4154629375327064}
   m_Father: {fileID: 4744477104122424}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.126184, y: 1.9062004, z: 8.213142}
 --- !u!4 &4250866878725922
 Transform:
   m_ObjectHideFlags: 1
@@ -514,7 +516,7 @@ Transform:
   - {fileID: 4687761133415728}
   m_Father: {fileID: 4744477104122424}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.2164192, y: 0, z: 0}
 --- !u!4 &4687761133415728
 Transform:
   m_ObjectHideFlags: 1
@@ -541,7 +543,7 @@ Transform:
   - {fileID: 4369017577806190}
   m_Father: {fileID: 4055667080462682}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.403707, y: -32, z: -101.61134}
 --- !u!4 &4722705930567066
 Transform:
   m_ObjectHideFlags: 1
@@ -583,7 +585,7 @@ Transform:
   - {fileID: 4722705930567066}
   m_Father: {fileID: 4055667080462682}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -50.342594, y: 0, z: 0}
 --- !u!23 &23053176370334218
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -939,6 +941,36 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &111380993615512006
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490200081789666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 301e957144c99e44ebd775e42001572c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 301e957144c99e44ebd775e42001572c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!111 &111926215169188290
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486396551615004}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 379d8fb68d6b8774984263800ceb3df1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 379d8fb68d6b8774984263800ceb3df1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114228765637622076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -984,8 +1016,8 @@ MonoBehaviour:
   size: 1
   attackConeObject: {fileID: 1692624118545170}
   arms:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1490200081789666}
+  - {fileID: 1486396551615004}
   legs: []
   lastAttack: 0
   healthBar: {fileID: 0}
