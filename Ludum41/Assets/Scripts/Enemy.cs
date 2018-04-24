@@ -21,6 +21,7 @@ public class Enemy : LivingEntity {
     public float difficulty;
     float updatePathTime = .1f;
     float lastUpdateTime = 0;
+    float currentWaitTime = .1f;
     WeaponController weaponController;
 
   public ParticleSystem DeathSplash;
@@ -38,36 +39,35 @@ public class Enemy : LivingEntity {
         target = transform.position;
         weaponController = GetComponent<WeaponController>();
         range = weaponController.GetWeaponRange();
+        StartCoroutine(Pathing());
 
 	}
 
     // Update is called once per frame
-    void Update()
+    IEnumerator Pathing()
     {
-        if (pathfinder.isOnNavMesh)
+        while (true)
         {
-            if (lastUpdateTime + updatePathTime < Time.time)
+          yield return new WaitForSeconds(currentWaitTime);
+            if (pathfinder.isOnNavMesh)
             {
-                lastUpdateTime = Time.time;
                 UpdateTarget();
 
                 pathfinder.SetDestination(target);
                 SetFleeingStatus();
+
+                // Draw Target Loc
+                Debug.DrawLine(transform.position, target, Color.blue);
             }
-
-            // Draw Target Loc
-            Debug.DrawLine(transform.position, target, Color.blue);
+            else if (transform.position.magnitude > 10000)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                pathfinder.Warp(transform.position + Vector3.down * (1/60));
+            }
         }
-        else if (transform.position.magnitude > 10000)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            pathfinder.Warp(transform.position + Vector3.down * Time.deltaTime);
-        }
-
-
     }
 
   public override void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
@@ -94,6 +94,9 @@ public class Enemy : LivingEntity {
     {
         Vector3 direction = transform.position - playerTrans.position;
         direction.y = 0;
+
+        currentWaitTime = (Mathf.Pow(direction.magnitude, .8f) / 8) + .1f;
+
         if (isFleeing)
         {
             if (direction.magnitude < runDist)
@@ -103,7 +106,7 @@ public class Enemy : LivingEntity {
             }
             else
             {
-                target = transform.position + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+                target = transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             }
         }
         else
