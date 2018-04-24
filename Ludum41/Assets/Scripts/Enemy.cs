@@ -130,10 +130,10 @@ public class Enemy : LivingEntity {
                 {
                     NewAudioManager.instance.Play("airhorn");
                 }
-                else
-                {
-                    NewAudioManager.instance.Play("akbar");
-                }
+                //else
+                //{
+                //    NewAudioManager.instance.Play("akbar");
+                //}
             }
         }
 
