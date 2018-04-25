@@ -11,8 +11,8 @@ public class TileBlock : MonoBehaviour
     public GameObject plane;
     public float seed;
     public Color[] colors;
-    float maxGrassDensity = 6.5f;
-    float minBigBuildingDensity = 9;
+    float maxGrassDensity = 7f;
+    float minBigBuildingDensity = 8.5f;
     public EnemySpawner Spawner;
 
     // Use this for initialization

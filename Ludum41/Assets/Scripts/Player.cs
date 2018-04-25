@@ -104,11 +104,11 @@ public class Player : LivingEntity
 
         if (Random.Range(0, 100) < 98)
         {
-            NewAudioManager.instance.Play("monstercri");
+            NewAudioManager.instance.Play("monstercri", transform, .3f);
         }
         else
         {
-            NewAudioManager.instance.Play("ree");
+            NewAudioManager.instance.Play("ree", transform, .5f);
         }
         
         //StartCoroutine(AnimateAttack());
@@ -134,9 +134,9 @@ public class Player : LivingEntity
 
     void AddMass()
     {
-        health += 3;
+        health += 2.5f;
         if (health > .9f * rb.mass) {
-            rb.mass += 3;
+            rb.mass += 2.5f;
             CalcShizzle();
             GameManager.Instance.UpdateUI();
         }
@@ -145,7 +145,7 @@ public class Player : LivingEntity
     void CalcShizzle()
     {
         size = Mathf.Pow(rb.mass, .5f) * .4f;
-        moveSpeed = baseMoveSpeed * Mathf.Pow(size, .5f);
+        moveSpeed = baseMoveSpeed * Mathf.Pow(size, .6f);
         attackRange = baseAttackRange * Mathf.Pow(size, .5f);
         transform.localScale = Vector3.one * size;
     }

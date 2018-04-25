@@ -275,8 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tile: {fileID: 114161946604914602, guid: b1b10322b9e74274188a6c4040514fb9, type: 2}
   tileSize: 100
-  range: 5
-  seed: 2
+  range: 7
+  seed: 1
   offset: {x: 0, y: 0}
 --- !u!4 &1449176311
 Transform:
@@ -393,7 +393,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: monstercri
     clip: {fileID: 8300000, guid: 8a4cade0730c0924295d5fc6b3bde751, type: 3}
-    volume: 0.35
+    volume: 0.196
     pitch: 1
     loop: 0
     source: {fileID: 0}

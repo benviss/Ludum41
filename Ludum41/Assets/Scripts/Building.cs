@@ -56,7 +56,7 @@ public class Building : LivingEntity
 
     private void SpawnPpl(int num)
     {
-        NewAudioManager.instance.Play("kids");
+        NewAudioManager.instance.Play("kids", transform.position, .4f);
         Spawner = Instantiate(Spawner);
         Spawner.transform.position = transform.position;
         Spawner.maxSpawnNumber = num;

@@ -26,11 +26,11 @@ public class CameraFollow : MonoBehaviour
             return;
         }
         Vector3 offset = CalcOffset();
-        Vector3 unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .5f) * distance;
+        Vector3 unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .65f) * distance;
         float range = (unsmoothedPosition - transform.position).sqrMagnitude;
 
         stuf(range);
-        unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .5f) * distance;
+        unsmoothedPosition = target.position - offset * Mathf.Pow(player.size, .65f) * distance;
         range = (unsmoothedPosition - transform.position).sqrMagnitude;
 
         if (range < .01)

@@ -128,7 +128,7 @@ public class Enemy : LivingEntity {
             {
                 if (Random.Range(0, 100) < 85)
                 {
-                    NewAudioManager.instance.Play("airhorn");
+                    NewAudioManager.instance.Play("airhorn", transform, .7f);
                 }
                 //else
                 //{
